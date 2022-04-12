@@ -42,7 +42,7 @@ public class UserService {
 
     //아이디 중복검사
     public String usernameCheck(UsernameCheckDto usernameCheckDto) {
-        String msg = "사용가능한 아이디 입니다.";
+        String msg = "사용가능한 이메일 입니다.";
 
         try {
             validator.idCheck(usernameCheckDto);

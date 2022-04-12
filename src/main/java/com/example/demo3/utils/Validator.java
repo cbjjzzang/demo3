@@ -18,7 +18,7 @@ public class Validator {
     // 회원가입 유효성 검사
     public void signupValidate(SignupRequestDto signupRequestDto) throws IllegalArgumentException {
         if (userRepository.findByUsername(signupRequestDto.getUsername()).isPresent()) {
-            throw new IllegalArgumentException("중복된 아이디가 존재합니다.");
+            throw new IllegalArgumentException("중복된 이메일이 존재합니다.");
         }
 
         if (userRepository.findByNickname(signupRequestDto.getNickname()).isPresent()) {
@@ -34,14 +34,14 @@ public class Validator {
         }
 
         if(signupRequestDto.getPassword().contains(signupRequestDto.getUsername())){
-            throw new IllegalArgumentException("ID가 포함되지 않은 비밀번호를 사용해주세요.");
+            throw new IllegalArgumentException("이메일이 포함되지 않은 비밀번호를 사용해주세요.");
         }
     }
 
     //아이디 중복 체크
     public void idCheck(UsernameCheckDto usernameCheckDto) throws IllegalArgumentException {
         if (userRepository.findByUsername(usernameCheckDto.getUsername()).isPresent()) {
-            throw new IllegalArgumentException("중복된 아이디가 존재합니다.");
+            throw new IllegalArgumentException("중복된 이메일이 존재합니다.");
         }
     }
 
