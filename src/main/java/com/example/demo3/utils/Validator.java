@@ -17,13 +17,13 @@ public class Validator {
 
     // 회원가입 유효성 검사
     public void signupValidate(SignupRequestDto signupRequestDto) throws IllegalArgumentException {
-//        if (userRepository.findByUsername(signupRequestDto.getUsername()).isPresent()) {
-//            throw new IllegalArgumentException("중복된 아이디가 존재합니다.");
-//        }
-//
-//        if (userRepository.findByNickname(signupRequestDto.getNickname()).isPresent()) {
-//            throw new IllegalArgumentException("중복된 닉네임이 존재합니다.");
-//        }
+        if (userRepository.findByUsername(signupRequestDto.getUsername()).isPresent()) {
+            throw new IllegalArgumentException("중복된 아이디가 존재합니다.");
+        }
+
+        if (userRepository.findByNickname(signupRequestDto.getNickname()).isPresent()) {
+            throw new IllegalArgumentException("중복된 닉네임이 존재합니다.");
+        }
 
         if(!Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$", signupRequestDto.getUsername())){
             throw new IllegalArgumentException("이메일 형식의 ID를 입력 해주세요.");
